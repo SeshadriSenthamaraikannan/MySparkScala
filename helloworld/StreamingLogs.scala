@@ -1,0 +1,5 @@
+package helloworld
+
+object StreamingLogs {
+  
+}

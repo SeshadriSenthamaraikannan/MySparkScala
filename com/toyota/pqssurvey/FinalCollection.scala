@@ -54,7 +54,7 @@ object FinalCollection {
       .getOrCreate()
       
        val questionMap: mutable.Map[String, String] = new mutable.HashMap[String, String]
-    val bd = sparkSession.sparkContext.textFile("file:///C:/Users/402960/PQSCodeSpecs.txt").map(x => x.split("\\|")).collect.map(x => {
+    val bd = sparkSession.sparkContext.textFile("file:///C:/Users/path/PQSCodeSpecs.txt").map(x => x.split("\\|")).collect.map(x => {
       val key = x(3).toString().trim() + x(4).toString().trim()
       val value = x(0).toString().trim()
       questionMap += key -> value
@@ -63,7 +63,7 @@ object FinalCollection {
      val bdQuestion= sparkSession.sparkContext.broadcast(bd(0))
      
    val questionMap1: mutable.Map[String, String] = new mutable.HashMap[String, String]   
-  val cd = sparkSession.sparkContext.textFile("file:///C:/Users/402960/Question_Desc.csv").map(x=>x.split(",")).collect.map(x=> {
+  val cd = sparkSession.sparkContext.textFile("file:///C:/Users/path/Question_Desc.csv").map(x=>x.split(",")).collect.map(x=> {
     val key = x(0).toString().trim()
     val value = x(1).toString().trim()
     questionMap1 += key -> value  
@@ -74,7 +74,7 @@ object FinalCollection {
   val cdQuestion = sparkSession.sparkContext.broadcast(cd(0))
       
       
-       val rdd_resp = sparkSession.sparkContext.textFile("file:///C:/Users/402960/PQS_Response.txt")
+       val rdd_resp = sparkSession.sparkContext.textFile("file:///C:/Users/path/PQS_Response.txt")
        
        val respfirst = rdd_resp.first();
    
@@ -166,7 +166,7 @@ object FinalCollection {
       
       
 
-    val rdd = sparkSession.sparkContext.textFile("file:///C:/Users/402960/PQS_Comments.txt")
+    val rdd = sparkSession.sparkContext.textFile("file:///C:/Users/path/PQS_Comments.txt")
     
         val commfirst = rdd.first();
    
@@ -265,7 +265,7 @@ object FinalCollection {
   
   
 
-    val rdd_feature = sparkSession.sparkContext.textFile("file:///C:/Users/402960/PQS_FeatureComments.txt")
+    val rdd_feature = sparkSession.sparkContext.textFile("file:///C:/Users/path/PQS_FeatureComments.txt")
     
        val featurefirst = rdd_feature.first();
    
